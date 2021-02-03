@@ -1,6 +1,6 @@
 Name:           os-prober
 Version:        1.77
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Probes disks on the system for installed operating systems
 
 # For more information about licensing, see copyright file.
@@ -26,6 +26,7 @@ Requires:       udev coreutils util-linux
 Requires:       grep /bin/sed /sbin/modprobe
 Requires:       grub2-tools-minimal
 
+BuildRequires: make
 BuildRequires:  gcc git
 
 %description
@@ -89,6 +90,9 @@ fi
 %{_var}/lib/%{name}
 
 %changelog
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.77-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Sat Oct 10 2020 Hedayat Vatankhah <hedayat.fwd+rpmchlog@gmail.com> - 1.77-6
 - Workaround for grub2-mount slow wildcard file matching, fixes #1770599
 
