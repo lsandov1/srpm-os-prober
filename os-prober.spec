@@ -1,6 +1,6 @@
 Name:           os-prober
 Version:        1.77
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Probes disks on the system for installed operating systems
 
 # For more information about licensing, see copyright file.
@@ -90,6 +90,9 @@ fi
 %{_var}/lib/%{name}
 
 %changelog
+* Fri Apr 16 2021 Mohan Boddu <mboddu@redhat.com> - 1.77-8
+- Rebuilt for RHEL 9 BETA on Apr 15th 2021. Related: rhbz#1947937
+
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.77-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
