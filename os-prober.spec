@@ -1,6 +1,6 @@
 Name:           os-prober
 Version:        1.77
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Probes disks on the system for installed operating systems
 
 # For more information about licensing, see copyright file.
@@ -90,6 +90,10 @@ fi
 %{_var}/lib/%{name}
 
 %changelog
+* Mon Aug 09 2021 Mohan Boddu <mboddu@redhat.com> - 1.77-9
+- Rebuilt for IMA sigs, glibc 2.34, aarch64 flags
+  Related: rhbz#1991688
+
 * Fri Apr 16 2021 Mohan Boddu <mboddu@redhat.com> - 1.77-8
 - Rebuilt for RHEL 9 BETA on Apr 15th 2021. Related: rhbz#1947937
 
