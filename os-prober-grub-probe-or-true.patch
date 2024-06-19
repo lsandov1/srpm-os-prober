@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Thu, 13 Jun 2024 17:05:44 -0600
+Subject: [PATCH] OR true in case grub-probe does not recognize the filesystem
+
+The grub2-mkconfig tool makes use of grub2-probe which may fail if no filesystem is
+found/recognized on a partition, leading to a command hang on the
+former command, with secundary consequences as leaving the partition
+mounted. To overcome the latter scenario, ORtrue the grub2-probe
+command so script continues its normal execution.
+
+Signed-off-by: Leo Sandoval <lsandova@redhat.com>
+---
+ linux-boot-probes/common/50mounted-tests | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/linux-boot-probes/common/50mounted-tests b/linux-boot-probes/common/50mounted-tests
+index ad68874..68fdc66 100755
+--- a/linux-boot-probes/common/50mounted-tests
++++ b/linux-boot-probes/common/50mounted-tests
+@@ -52,7 +52,7 @@ if type grub-mount >/dev/null 2>&1 && \
+    type grub-probe >/dev/null 2>&1 && \
+    grub-mount "$partition" "$tmpmnt" 2>/dev/null; then
+ 	mounted=1
+-	type="$(grub-probe -d "$partition" -t fs)"
++	type="$(grub-probe -d "$partition" -t fs || true)"
+ 	[ "$type" ] || type=fuseblk
+ fi
+ 

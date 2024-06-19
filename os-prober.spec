@@ -1,6 +1,6 @@
 Name:           os-prober
 Version:        1.77
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Probes disks on the system for installed operating systems
 
 # For more information about licensing, see copyright file.
@@ -21,6 +21,7 @@ Patch8:         os-prober-grub2-parsefix.patch
 Patch9:         os-prober-grepfix.patch
 Patch10:        os-prober-gentoo-fix.patch
 Patch11:        os-prober-grub2-mount-workaround.patch
+Patch12:        os-prober-grub-probe-or-true.patch
 
 Requires:       udev coreutils util-linux
 Requires:       grep /bin/sed /sbin/modprobe
@@ -90,6 +91,10 @@ fi
 %{_var}/lib/%{name}
 
 %changelog
+* Thu Jun 13 2024 Leo Sandoval <lsandova@redhat.com> - 1.77-11
+- OR true in case grub-probe does not recognize the filesystem
+- Resolves: RHEL-41245
+
 * Mon Feb 27 2023 Robbie Harwood <rharwood@redhat.com> - 1.77-10
 - Fix inheritance of environment build flags
 - Resolves: #2144572
