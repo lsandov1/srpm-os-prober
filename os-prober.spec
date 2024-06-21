@@ -21,7 +21,7 @@ Patch8:         os-prober-grub2-parsefix.patch
 Patch9:         os-prober-grepfix.patch
 Patch10:        os-prober-gentoo-fix.patch
 Patch11:        os-prober-grub2-mount-workaround.patch
-Patch12:        os-prober-grub-probe-or-true.patch
+Patch12:        os-prober-trap_unmount.patch
 
 Requires:       udev coreutils util-linux
 Requires:       grep /bin/sed /sbin/modprobe
@@ -91,8 +91,8 @@ fi
 %{_var}/lib/%{name}
 
 %changelog
-* Thu Jun 13 2024 Leo Sandoval <lsandova@redhat.com> - 1.77-11
-- OR true in case grub-probe does not recognize the filesystem
+* Thu Jun 20 2024 Leo Sandoval <lsandova@redhat.com> - 1.77.11
+- 50mounted-tests: trap do_unmount function on errors
 - Resolves: RHEL-41245
 
 * Mon Feb 27 2023 Robbie Harwood <rharwood@redhat.com> - 1.77-10
